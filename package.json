@@ -1,11 +1,11 @@
 {
   "name": "plants-api",
   "version": "1.0.0",
-  "main": "main.ts",
+  "main": "index.ts",
   "scripts": {
-    "dev": "nodemon --exec ts-node src/main.ts",
+    "dev": "nodemon --exec ts-node src/index.ts",
     "build": "tsc",
-    "start": "node dist/main.js"
+    "start": "node dist/index.js"
   },
   "keywords": [],
   "author": "",
