@@ -2,8 +2,9 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./dbConfig";
 import PlantModel from "./schemas/plantsSchema";
+import path from "path";
 
-dotenv.config({ path: "../.env" });
+dotenv.config({path: path.join(__dirname, '..', '.env')});
 
 // Conectare la MongoDB
 connectDB();
