@@ -32,7 +32,7 @@ app.get("/plants", async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT} http://localhost:5000/plants`);
+  console.log(`Server running on port ${PORT} http://localhost:3000/plants`);
 });
