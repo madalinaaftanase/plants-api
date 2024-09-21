@@ -3,7 +3,8 @@ import dotenv from "dotenv";
 import connectDB from "./dbConfig";
 import PlantModel from "./schemas/plantsSchema";
 
-dotenv.config().parsed;
+dotenv.config();
+
 // Conectare la MongoDB
 connectDB();
 
