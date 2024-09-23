@@ -23,7 +23,7 @@ app.get("/plants", async (req, res) => {
       filter.scientific_name = new RegExp(scientific_name as string, "i");
     }
 
-    const plants = await PlantModel.find(filter);
+    const plants = await PlantModel.find(filter).limit(50);
 
     res.json(plants);
   } catch (error) {
