@@ -11,6 +11,26 @@ connectDB();
 const app = express();
 app.use(express.json());
 
+app.patch("/plants/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { imageUrl } = req.body;
+
+    const plant = PlantModel.findByIdAndUpdate(
+      id,
+      { default_imageUrl: imageUrl },
+      { new: true }
+    );
+    if (plant) {
+      res.status(200).send(plant);
+    } else {
+      res.status(404).send("Plant not found");
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal server error");
+  }
+});
 app.get("/plants", async (req, res) => {
   try {
     const { common_name, scientific_name } = req.query;
