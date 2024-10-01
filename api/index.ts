@@ -16,7 +16,7 @@ app.patch("/plants/:id", async (req, res) => {
     const { id } = req.params;
     const { imageUrl } = req.body;
 
-    const plant = PlantModel.findByIdAndUpdate(
+    const plant = await PlantModel.findByIdAndUpdate(
       id,
       { default_imageUrl: imageUrl },
       { new: true }
@@ -28,7 +28,7 @@ app.patch("/plants/:id", async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    res.status(500).send(error);
+    res.status(500).json({ message: "Error updating plant", error });
   }
 });
 app.get("/plants", async (req, res) => {
