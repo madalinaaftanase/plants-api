@@ -28,7 +28,7 @@ app.patch("/plants/:id", async (req, res) => {
     }
   } catch (error) {
     console.error(error);
-    res.status(500).send("Internal server error");
+    res.status(500).send(error);
   }
 });
 app.get("/plants", async (req, res) => {
