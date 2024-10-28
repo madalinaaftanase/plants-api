@@ -31,6 +31,21 @@ app.patch("/plants/:id", async (req, res) => {
     res.status(500).json({ message: "Error updating plant", error });
   }
 });
+
+app.post("/plants", async (req, res) => {
+  try {
+    const newPlant = req.body;
+    if (!newPlant) res.status(400).send("Bad content");
+
+    const plant = await PlantModel.create(newPlant);
+    res.json(plant)
+  }
+  catch (error) {
+    console.error(error);
+    res.status(500).send("Server error");
+  }
+})
+
 app.get("/plants", async (req, res) => {
   try {
     const { common_name, scientific_name } = req.query;
