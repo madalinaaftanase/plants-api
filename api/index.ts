@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import connectDB from "./dbConfig";
 import PlantModel from "./schemas/plantsSchema";
+import cors from "cors";
 
 dotenv.config();
 
@@ -10,6 +11,11 @@ connectDB();
 
 const app = express();
 app.use(express.json());
+app.use(cors({
+  origin: "https://green-bay-012cb1c03.5.azurestaticapps.net",
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  credentials: true
+}));
 
 app.patch("/plants/:id", async (req, res) => {
   try {
